@@ -8,12 +8,14 @@ class Dosen extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Dosen_model');
+        $this->load->model('User_model');
     }
 
     public function index()
     {
         $data['judul'] = "Halaman Dosen";
         $data['dosen'] = $this->Dosen_model->get();
+        $data['user'] = $this->User_model->getBy();
 
         $this->load->view("layout/header", $data);
         $this->load->view("dosen/vw_dosen", $data);

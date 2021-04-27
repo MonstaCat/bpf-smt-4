@@ -10,12 +10,14 @@ class Prodi extends CI_Controller
         $this->load->model('Prodi_model');
         $this->load->model('Dosen_model');
         $this->load->model('Jurusan_model');
+        $this->load->model('User_model');
     }
 
     public function index()
     {
         $data['judul'] = "Halaman Prodi";
         $data['prodi'] = $this->Prodi_model->get();
+        $data['user'] = $this->User_model->getBy();
 
         $this->load->view("layout/header", $data);
         $this->load->view("prodi/vw_prodi", $data);

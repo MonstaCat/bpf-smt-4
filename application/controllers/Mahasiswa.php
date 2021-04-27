@@ -9,12 +9,14 @@ class Mahasiswa extends CI_Controller
         parent::__construct();
         $this->load->model('Mahasiswa_model');
         $this->load->model('Prodi_model');
+        $this->load->model('User_model');
     }
 
     public function index()
     {
         $data['judul'] = "Halaman Mahasiswa";
         $data['mahasiswa'] = $this->Mahasiswa_model->get();
+        $data['user'] = $this->User_model->getBy();
 
         $this->load->view("layout/header", $data);
         $this->load->view("mahasiswa/vw_mahasiswa", $data);

@@ -9,12 +9,14 @@ class Jurusan extends CI_Controller
         parent::__construct();
         $this->load->model('Jurusan_model');
         $this->load->model('Dosen_model');
+        $this->load->model('User_model');
     }
 
     public function index()
     {
         $data['judul'] = "Halaman Jurusan";
         $data['jurusan'] = $this->Jurusan_model->get();
+        $data['user'] = $this->User_model->getBy();
 
         $this->load->view("layout/header", $data);
         $this->load->view("jurusan/vw_jurusan", $data);
